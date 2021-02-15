@@ -1,0 +1,14 @@
+.selected { color : blue; font-weight: bold;}
+.c1 { background-color:rgb(250, 235, 152)}
+.myWrapFlexbox {
+    padding : 1em; 
+    display: flex;
+    flex-flow: row wrap;
+   }
+   
+.myColItem {
+  flex: 1 1 auto;
+  text-align: left;       
+  padding: 2px;
+  margin: 8px;
+}
