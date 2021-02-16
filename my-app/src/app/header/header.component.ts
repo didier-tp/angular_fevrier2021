@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MenuDefinition } from '../bs-util/data/MenuDefinition';
+import { PreferencesService } from '../common/service/preferences.service';
 
 @Component({
   selector: 'app-header',
@@ -24,9 +25,12 @@ export class HeaderComponent implements OnInit {
     { label : "welcome" , path : "ngr-welcome" }
     ];
 
-  constructor() { }
+  constructor(public preferencesService : PreferencesService) {
+    console.log("dans le constructeur de HeaderComponent , titre=" + this.titre);
+   }
 
   ngOnInit(): void {
+    console.log("dans le ngOnInit() de HeaderComponent , titre=" + this.titre);
   }
 
   
