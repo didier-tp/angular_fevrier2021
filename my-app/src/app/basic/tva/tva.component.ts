@@ -12,6 +12,9 @@ taux :number = 20 ;
 tva :number =  0 ; 
 ttc :number = 0 ;
 
+aujourdhui : Date = new Date();
+x : number = 5;
+
 listeTaux = [ 5 , 10 , 20]  ;          
 
 onCalculerTvaEtTtc(){

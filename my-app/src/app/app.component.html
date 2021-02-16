@@ -1,5 +1,19 @@
-<p> welcome to {{title}} </p>
-<app-header></app-header>
-<app-basic></app-basic>
-<app-footer></app-footer>
-<!-- <router-outlet></router-outlet> -->
+<div class="container-fluid">
+  <!-- <p> welcome to {{title}} </p> -->
+  <!--
+  <app-header ></app-header>
+  <app-header titre='monAppli'></app-header>
+  <app-header [titre]="'monAppli'"></app-header>
+  -->
+  <app-header [titre]='title'></app-header>
+  <!-- 
+  <app-basic></app-basic>
+  <app-login></app-login>
+  <app-login2></app-login2>
+  -->
+  <router-outlet></router-outlet> 
+    <!-- router-outlet sera automatiquement remplacé par WelcomeComponent ou LoginComponent ou BasicComponent ou ...
+        selon la route (fin de pseudo-url) courante-->
+  <app-footer (humeurEvent) = "onChangementHumeur($event)"></app-footer>
+</div>
+ 

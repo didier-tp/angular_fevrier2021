@@ -1,0 +1,15 @@
+<h3>login</h3>
+<form novalidate [formGroup]="myForm">
+<label>username:</label>
+   <input  formControlName="username" /> 
+      <br/>
+<label>password:</label>
+   <input formControlName="password" /> 
+     <br/>
+<label>roles:</label>
+    <input formControlName="roles" /> 
+      <br/>
+<input type="button" value="login" (click)="onLogin()" [disabled]="myForm.invalid" />
+      <br/>
+    </form>
+message: {{message}}

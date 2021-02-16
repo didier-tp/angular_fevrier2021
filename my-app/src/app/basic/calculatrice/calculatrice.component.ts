@@ -18,6 +18,7 @@ export class CalculatriceComponent implements OnInit {
        switch(op){
          case "+" :
             this.res = Number(this.a) + Number(this.b);  break;
+           //this.res = this.a + this.b;  break;
         case "-" :
               this.res = Number(this.a)- Number(this.b);  break;
         case "*" :
