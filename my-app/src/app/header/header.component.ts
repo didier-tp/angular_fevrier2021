@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
       ]
     },
     { label : "basic" , path : "ngr-basic" } , 
+    { label : "conversion" , path : "ngr-conversion" } , 
     { label : "welcome" , path : "ngr-welcome" }
     ];
 

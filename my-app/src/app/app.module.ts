@@ -17,6 +17,7 @@ import { Login2Component } from './login2/login2.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BsUtilModule } from './bs-util/bs-util.module';
+import { ConversionComponent } from './conversion/conversion.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { BsUtilModule } from './bs-util/bs-util.module';
     CalculatriceComponent,
     TvaComponent , 
     XyComponent , 
-    ZzComponent, ExponentialPipe, LoginComponent, Login2Component, WelcomeComponent
+    ZzComponent, ExponentialPipe, LoginComponent, Login2Component, WelcomeComponent, ConversionComponent
   ],
   imports: [
     BrowserModule,
