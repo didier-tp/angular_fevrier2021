@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Login } from '../data/login';
 import { LoginResponse } from '../data/loginResponse';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -16,6 +16,8 @@ export class LoginService {
   private _headers = new HttpHeaders({'Content-Type': 'application/json'}); 
 
   constructor(private _http : HttpClient) { }
+
+  public currentUserRoleBs =  new BehaviorSubject<string>(null);
 
   public postLogin$(login: Login): Observable<LoginResponse>{
      let url = this._apiBaseUrl +"/public/auth";
@@ -32,9 +34,11 @@ export class LoginService {
        if(loginResponse.status){
          sessionStorage.setItem('authToken',loginResponse.token);
          //ou autre façon de mémoriser le jeton
+         this.currentUserRoleBs.next(loginResponse.roles);
        }
        else{
         sessionStorage.setItem('authToken',null);
+        this.currentUserRoleBs.next(null);
        }
   }
 

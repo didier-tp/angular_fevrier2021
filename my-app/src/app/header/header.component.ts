@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MenuDefinition } from '../bs-util/data/MenuDefinition';
+import { LoginService } from '../common/service/login.service';
 import { PreferencesService } from '../common/service/preferences.service';
 
 @Component({
@@ -12,13 +13,15 @@ export class HeaderComponent implements OnInit {
   @Input()
   public titre : string ="titre par defaut";
 
+  public currentUserRolesLocal : string = null;
+
   myMenuDefs : MenuDefinition[] = [
     { label : "admin" , 
       children : [
         { label : "login" , path : "ngr-login" } ,
         { label : "login2" , path : "ngr-login2" },
         { divider : true } ,
-        { label : "admin-devise" , path : "ngr-admin-devise" }
+        { label : "admin-devise" , path : "ngr-admin-devise" , role : "admin"}
       ]
     },
     { label : "basic" , path : "ngr-basic" } , 
@@ -37,7 +40,12 @@ export class HeaderComponent implements OnInit {
       }
     }
 
-    constructor(private _preferencesService : PreferencesService) {
+    constructor(private _preferencesService : PreferencesService , private _loginService : LoginService) {
+
+      this._loginService.currentUserRoleBs.subscribe(
+        (roles:string) => { this.currentUserRolesLocal = roles;}
+      );
+
       //synchronisation de la "copie locale":
       this._preferencesService.couleurFondPrefereeObservable
       .subscribe(
