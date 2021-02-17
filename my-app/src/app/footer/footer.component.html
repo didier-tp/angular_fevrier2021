@@ -1,6 +1,7 @@
 <p class="piedPage">
   footer -  couleurFondPreferee:
-    <select [(ngModel)]="preferencesService.couleurFondPreferee" >
+    <select [(ngModel)]="couleurFondPrefereeLocale"
+    (ngModelChange)="onCouleurFondPrefereeLocaleChange()" >
         <option *ngFor="let c of listeCouleurs" [ngValue]="c">{{c}}</option>
     </select>
   <label>humeur:</label>  

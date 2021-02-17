@@ -26,7 +26,28 @@ export class HeaderComponent implements OnInit {
     { label : "welcome" , path : "ngr-welcome" }
     ];
 
-  constructor(public preferencesService : PreferencesService) {
+    public couleurFondPrefereeLocale : string = "lightgrey";
+    public couleurTexte : string ="black";
+
+    private ajusterCouleurTexteSelonCouleurFond(){
+      if(this.couleurFondPrefereeLocale=="blue"){
+        this.couleurTexte="white";
+      }else{
+        this.couleurTexte="black";
+      }
+    }
+
+    constructor(private _preferencesService : PreferencesService) {
+      //synchronisation de la "copie locale":
+      this._preferencesService.couleurFondPrefereeObservable
+      .subscribe(
+        //callback éventuellement re-déclenchée plusieurs fois:
+        (couleurFondPreferee)=>{
+            console.log("nouvelle couleurFondPreferee="+couleurFondPreferee);
+            this.couleurFondPrefereeLocale=couleurFondPreferee;
+            this.ajusterCouleurTexteSelonCouleurFond();
+            }
+      );
     console.log("dans le constructeur de HeaderComponent , titre=" + this.titre);
    }
 

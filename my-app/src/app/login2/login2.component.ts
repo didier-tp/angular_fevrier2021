@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginResponse } from '../common/data/loginResponse';
+import { LoginService } from '../common/service/login.service';
 
 /*
  version "model-driven" du composant login (avec formaulaire)
@@ -16,7 +18,7 @@ export class Login2Component implements OnInit {
 
   public message :string ;
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder, private _loginService : LoginService) {}
   
   ngOnInit() {
   this.myForm = this._formBuilder.group({
@@ -26,8 +28,22 @@ export class Login2Component implements OnInit {
   });
   }
 
+
   public onLogin(){
     this.message = "donnees saisies = " + JSON.stringify(this.myForm.value);
+    console.log(this.message);
+    this._loginService.postLogin(this.myForm.value).subscribe(
+      {
+        next: (loginResponse : LoginResponse)=>{ this.gererLoginResponse(loginResponse); },
+        error: (err) => { console.log("error:"+err)}
+     }
+    );
+    
  }
- 
+
+ private gererLoginResponse(loginResponse : LoginResponse){
+     console.log("loginResponse:" + JSON.stringify(loginResponse));
+     this.message = loginResponse.message;
+ }
+
 }

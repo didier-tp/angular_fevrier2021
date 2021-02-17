@@ -18,11 +18,27 @@ export class FooterComponent implements OnInit {
      this.humeurEvent.emit({value: this.humeur});
    }
 
-   listeCouleurs : string[] = [ "lightyellow", "white",
-   "lightgrey" , "lightgreen" , "lightpink" , "lightblue"] ; 
+   public couleurFondPrefereeLocale : string = "lightgrey";
 
-  constructor(public preferencesService : PreferencesService) { }
-
+   public listeCouleurs : string[] = [ "lightyellow", "white", "blue",
+      "lightgrey" , "lightgreen" , "lightpink" , "lightblue"] ;
+ 
+ 
+   constructor(private _preferencesService : PreferencesService) {
+         //synchronisation de la "copie locale":
+         this._preferencesService.couleurFondPrefereeObservable
+             .subscribe(
+               //callback éventuellement re-déclenchée plusieurs fois:
+               (couleurFondPreferee)=>{
+                   this.couleurFondPrefereeLocale=couleurFondPreferee;}
+             );
+   }
+ 
+   public onCouleurFondPrefereeLocaleChange(){
+     this._preferencesService.couleurFondPreferee=
+                     this.couleurFondPrefereeLocale;
+   }
+ 
 
   ngOnInit(): void {
   }
