@@ -17,8 +17,8 @@ export class HeaderComponent implements OnInit {
       children : [
         { label : "login" , path : "ngr-login" } ,
         { label : "login2" , path : "ngr-login2" },
-        { divider : true } /*,
-        { label : "menu-item3" , path : "path3" }*/
+        { divider : true } ,
+        { label : "admin-devise" , path : "ngr-admin-devise" }
       ]
     },
     { label : "basic" , path : "ngr-basic" } , 

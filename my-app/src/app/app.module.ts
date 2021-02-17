@@ -20,6 +20,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BsUtilModule } from './bs-util/bs-util.module';
 import { ConversionComponent } from './conversion/conversion.component';
+import { MyAuthInterceptor } from './common/interceptor/my-auth.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AdminDeviseComponent } from './admin-devise/admin-devise.component';
 
 @NgModule({
   declarations: [
@@ -30,14 +33,20 @@ import { ConversionComponent } from './conversion/conversion.component';
     CalculatriceComponent,
     TvaComponent , 
     XyComponent , 
-    ZzComponent, ExponentialPipe, LoginComponent, Login2Component, WelcomeComponent, ConversionComponent
+    ZzComponent, ExponentialPipe, LoginComponent, Login2Component, WelcomeComponent, ConversionComponent, AdminDeviseComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule , HttpClientModule,
     FormsModule , ReactiveFormsModule , TabsModule.forRoot() , BsUtilModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MyAuthInterceptor,
+      multi: true
+      }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

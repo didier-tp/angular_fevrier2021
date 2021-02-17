@@ -33,6 +33,12 @@ export class DeviseService {
     return this._http.get<Devise[]>(url);
   }
 
+  public deleteDeviseServerSide$(deviseCode):Observable<any>{
+    let url = this._apiBaseUrl + "/private/role_admin/devise/" + deviseCode ;
+    console.log("deleteUrl=" + url );
+    return this._http.delete(url);
+  }
+
   public convertir$(montant: number,
                    codeDeviseSrc : string, 
                    codeDeviseTarget : string

@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   public onLogin(){
     this.message = "donnees saisies = " + JSON.stringify(this.login);
     console.log(this.message);
-    this._loginService.postLogin(this.login).subscribe(
+    this._loginService.postLogin$(this.login).subscribe(
       {
         next: (loginResponse : LoginResponse)=>{ this.gererLoginResponse(loginResponse); },
         error: (err) => { console.log("error:"+err)}
