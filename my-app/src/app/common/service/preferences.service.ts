@@ -6,6 +6,10 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class PreferencesService {
 
+  public addition(a: number , b:number){
+    return a+b;
+  }
+
   private _couleurFondPreferee$ :BehaviorSubject<string> ;
 
   constructor() { 
