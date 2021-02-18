@@ -1,5 +1,5 @@
 <p class="piedPage">
-  footer -  couleurFondPreferee:
+  <span appHighlight>footer</span> -  couleurFondPreferee:
     <select [(ngModel)]="couleurFondPrefereeLocale"
     (ngModelChange)="onCouleurFondPrefereeLocaleChange()" >
         <option *ngFor="let c of listeCouleurs" [ngValue]="c">{{c}}</option>

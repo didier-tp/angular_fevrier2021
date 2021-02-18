@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Login } from '../common/data/login';
 import { LoginResponse } from '../common/data/loginResponse';
 import { LoginService } from '../common/service/login.service';
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   public message :string ;
   
 
-  constructor(private _loginService : LoginService) { }
+  constructor(private _loginService : LoginService , private _router : Router) { }
 
   public onLogin(){
     this.message = "donnees saisies = " + JSON.stringify(this.login);
@@ -31,6 +32,10 @@ export class LoginComponent implements OnInit {
  private gererLoginResponse(loginResponse : LoginResponse){
      console.log("loginResponse:" + JSON.stringify(loginResponse));
      this.message = loginResponse.message;
+     if(loginResponse.status){
+       let link = [ '/ngr-admin-devise'];
+       this._router.navigate(link); //pour naviguer automatiquement vers admin-devise .
+     }
  }
 
   ngOnInit(): void {

@@ -23,6 +23,7 @@ import { ConversionComponent } from './conversion/conversion.component';
 import { MyAuthInterceptor } from './common/interceptor/my-auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdminDeviseComponent } from './admin-devise/admin-devise.component';
+import { HighlightDirective } from './common/directive/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { AdminDeviseComponent } from './admin-devise/admin-devise.component';
     CalculatriceComponent,
     TvaComponent , 
     XyComponent , 
-    ZzComponent, ExponentialPipe, LoginComponent, Login2Component, WelcomeComponent, ConversionComponent, AdminDeviseComponent
+    ZzComponent, ExponentialPipe, LoginComponent, Login2Component, WelcomeComponent, ConversionComponent, AdminDeviseComponent, HighlightDirective
   ],
   imports: [
     BrowserModule,
