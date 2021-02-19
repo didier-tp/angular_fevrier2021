@@ -41,17 +41,18 @@ export class ConversionComponent implements OnInit {
       this.codeDeviseSource = tabDevises[0].code; //valeur par défaut
       this.codeDeviseCible = tabDevises[0].code; //valeur par défaut
     }
+    console.log("initListeDevises() called after ngOnInit() , this.listeDevises=" + this.listeDevises);
   }
 
   //ngOnInit() est automatiquement appelée par le framework après le constructeur
   //et après la prise en compte des injections et des éventuels @Input
   ngOnInit(): void {
     this._deviseService.getAllDevises$()
-            .pipe(
+          /*  .pipe(
                           map( (tabDevise) => tabDevise.sort( 
                                                       (p1,p2)=> p1.name.localeCompare(p2.name)
                                                           ) )
-           )
+           )*/
          .subscribe({
             next: (tabDev : Devise[])=>{ this.initListeDevises(tabDev); },
             error: (err) => { console.log("error:"+err)}
